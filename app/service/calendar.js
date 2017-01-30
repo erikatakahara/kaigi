@@ -1,5 +1,6 @@
 const google = require('googleapis'),
-	auth = require('../service/authorization');
+	auth = require('../service/authorization'),
+	config = require('../../config.json');
 
 google.options({
   auth: auth.client
@@ -45,7 +46,7 @@ function watch() {
 			id: 1,
 			token: 'optional-token',
 			type: 'web_hook',
-			maxResults: 20,
+			address: config.URL + '/calendar/watch/callback',
 			singleEvents: true,
 			orderBy: 'startTime'
 		}, function(err, response) {
@@ -53,7 +54,7 @@ function watch() {
 				reject(err);
 				return;
 			}
-			resolve(response.items);
+			resolve(response);
 		});
 	});
 }

@@ -4,6 +4,7 @@
   "description": "Base Project",
   "main": "index.js",
   "scripts": {
+    "start": "node app/app.js",
     "start-dev": "node app/app.js",
     "dev": "npm run build && npm run watch",
     "build:css": "node-sass  webapp/assets/sass/ -r --include-path webapp/assets/sass/ --output-style compressed --source-map true -o webapp/assets/css",
@@ -14,6 +15,9 @@
   },
   "author": "Erika Takahara",
   "license": "ISC",
+  "engines": {
+    "node": "6.2.0"
+  },
   "devDependencies": {
     "autoprefixer": "6.3.6",
     "node-sass": "3.8.0",
@@ -21,9 +25,16 @@
     "postcss-cli": "2.5.2"
   },
   "dependencies": {
+    "body-parser": "^1.16.0",
+    "connect-memcached": "^0.2.0",
+    "connect-memjs": "^0.1.0",
+    "cookie-parser": "^1.4.3",
     "express": "4.14.1",
     "express-handlebars": "3.0.0",
-    "google-auth-library": "^0.10.0",
-    "googleapis": "^16.1.0"
+    "express-session": "^1.15.0",
+    "google-auth-library": "0.10.0",
+    "googleapis": "16.1.0",
+    "passport": "^0.3.2",
+    "passport-google-oauth20": "^1.0.0"
   }
 }
