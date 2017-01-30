@@ -1,0 +1,29 @@
+{
+  "name": "base-project",
+  "version": "1.0.0",
+  "description": "Base Project",
+  "main": "index.js",
+  "scripts": {
+    "start-dev": "node app/app.js",
+    "dev": "npm run build && npm run watch",
+    "build:css": "node-sass  webapp/assets/sass/ -r --include-path webapp/assets/sass/ --output-style compressed --source-map true -o webapp/assets/css",
+    "build": "npm run build:css",
+    "postbuild:css": "find webapp/assets/css -name '*.css' | xargs postcss --use autoprefixer --autoprefixer.browsers 'last 2 versions, > 5%, ie >= 9' --replace",
+    "watch:css": "nodemon -e scss --exec 'npm run build:css'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Erika Takahara",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "6.3.6",
+    "node-sass": "3.8.0",
+    "nodemon": "1.9.2",
+    "postcss-cli": "2.5.2"
+  },
+  "dependencies": {
+    "express": "4.14.1",
+    "express-handlebars": "3.0.0",
+    "google-auth-library": "^0.10.0",
+    "googleapis": "^16.1.0"
+  }
+}
